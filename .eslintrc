@@ -1,0 +1,43 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "babel"
+  ],
+  "globals": {
+    "$": true
+  },
+  "rules": {
+    "semi": [
+      2,
+      "always"
+    ],
+    "max-len": [
+      2,
+      120,
+      2
+    ],
+    "space-before-function-paren": [
+      "error",
+      "never"
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "react/jsx-no-bind": 0,
+    "generator-star-spacing": 0,
+    "babel/generator-star-spacing": 1,
+    "babel/array-bracket-spacing": 1,
+    "babel/object-curly-spacing": 1,
+    "babel/object-shorthand": 1,
+    "babel/no-await-in-loop": 1,
+    "babel/flow-object-type": 1
+  }
+}
