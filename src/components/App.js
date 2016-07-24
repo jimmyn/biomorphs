@@ -1,12 +1,19 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
+import * as actions from 'actions';
 import Biomorph from './Biomorph';
 
-const App = () => (
+const App = ({genome, getRandomGenome}) => (
   <div className="ui container">
     <section>
-      <Biomorph length={100} divergence={50} reduction={0.8} thickness={5} levels={10} />
+      <Biomorph genome={genome} onClick={() => getRandomGenome()} />
+      <p>[{genome.join(', ')}]</p>
     </section>
   </div>
 );
 
-export default App;
+const mapStateToProps = (state) => ({
+  genome: state.genome
+});
+
+export default connect(mapStateToProps, actions)(App);
