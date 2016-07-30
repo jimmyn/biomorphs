@@ -1,10 +1,14 @@
 import React, {PropTypes} from 'react';
+import Header from './Header';
 import classNames from './App.scss';
 
 const App = ({children}) => (
-  <div className={classNames.container}>
-    {children}
-  </div>
+  <main className={classNames.container}>
+    <Header />
+    <section className={classNames.content}>
+      {children}
+    </section>
+  </main>
 );
 
 App.propTypes = {

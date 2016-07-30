@@ -4,7 +4,7 @@ import HomeView from './HomeView';
 
 const mapStateToProps = (state) => ({
   parentGenome: state.parentGenome,
-  generation: state.generation,
+  generation: state.history.length,
   descendantsGenomes: state.descendantsGenomes
 });
 

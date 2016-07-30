@@ -12,34 +12,40 @@ const mutation = (gene) => {
   return gene + plusOrMinus;
 };
 
-let generation = 1;
-export const reproduce = (genome, isNewGeneration = true) => {
-  if (isNewGeneration) generation++;
-  const genomes = genome.map((gene, i) => [
-    ...genome.slice(0, i),
-    mutation(genome[i]),
-    ...genome.slice(i + 1)
-  ]);
-  return {
-    type: types.REPRODUCE,
-    generation,
-    genomes: genomes.sort(() => 0.5 - Math.random())
+export const reproduce = (genome, isFirstGeneration = false) => {
+  return dispatch => {
+    const genomes = genome.map((gene, i) => [
+      ...genome.slice(0, i),
+      mutation(genome[i]),
+      ...genome.slice(i + 1)
+    ]);
+    dispatch({
+      type: types.REPRODUCE,
+      genomes: genomes.sort(() => 0.5 - Math.random())
+    });
+    if (isFirstGeneration) {
+      dispatch({type: types.CLEAR_HISTORY});
+    }
+    dispatch({
+      type: types.UPDATE_HISTORY,
+      genome
+    });
   };
 };
 
-export const selectParentGenome = (genome, isNewGeneration) => {
+export const selectParentGenome = (genome, isFirstGeneration) => {
   return dispatch => {
     dispatch({
       type: types.SELECT_PARENT_GENOME,
       genome
     });
-    dispatch(reproduce(genome, isNewGeneration));
+    dispatch(reproduce(genome, isFirstGeneration));
   };
 };
 
 export const getRandomGenome = () => {
   return dispatch => {
     const genome = Array.from(new Array(9), n => utils.getRandomInt(1, 10));
-    dispatch(selectParentGenome(genome, false));
+    dispatch(selectParentGenome(genome, true));
   };
 };

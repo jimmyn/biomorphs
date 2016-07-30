@@ -11,11 +11,6 @@ const HomeView = ({
   generation
 }) => (
   <section>
-    <button
-      onClick={getRandomGenome}
-      className={classNames.button}>
-      Generate random genome
-    </button>
     <h2>Parent (generation #{generation})</h2>
     <section className={classNames.parent}>
       <Biomorph

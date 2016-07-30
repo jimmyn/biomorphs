@@ -11,7 +11,7 @@ class Biomorph extends Component {
 
   static propTypes = {
     genome: PropTypes.array.isRequired,
-    onClick: PropTypes.function,
+    onClick: PropTypes.func,
     thumb: PropTypes.bool,
     number: PropTypes.number
   };

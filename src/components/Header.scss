@@ -1,0 +1,14 @@
+.nav {
+  display: block;
+  padding: 2em;
+}
+
+.link {
+  margin: 0 0.5em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.activeLink {
+  text-decoration: underline;
+}
