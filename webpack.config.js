@@ -85,7 +85,9 @@ export default function(options) {
         debug: false
       }),
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': 'production'
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.optimize.DedupePlugin(),
@@ -97,6 +99,10 @@ export default function(options) {
         }
       })
     );
+  }
+
+  if (options.deploy) {
+    webpackConfig.output.publicPath = '/biomorphs/'
   }
 
   return webpackConfig;
