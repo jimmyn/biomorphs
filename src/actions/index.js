@@ -45,7 +45,7 @@ export const selectParentGenome = (genome, isFirstGeneration) => {
 
 export const getRandomGenome = () => {
   return dispatch => {
-    const genome = Array.from(new Array(9), n => utils.getRandomInt(1, 10));
+    const genome = Array.from(new Array(10), n => utils.getRandomInt(1, 10));
     dispatch(selectParentGenome(genome, true));
   };
 };

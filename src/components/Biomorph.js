@@ -1,7 +1,9 @@
 import React, {Component, PropTypes} from 'react';
+import Rainbow from 'rainbowvis.js';
 import Branch from 'lib/Branch';
 import * as utils from 'lib/utils';
 import classNames from './Biomorph.scss';
+import colors from 'lib/colors';
 
 class Biomorph extends Component {
   constructor(props) {
@@ -24,7 +26,7 @@ class Biomorph extends Component {
 
   init() {
     const g = this.props.genome;
-    this.level = 1;
+    this.level = 0;
     this.length = g[0] * 20;
     this.thikness = Math.sqrt(g[1]);
     this.firstAngle = g[2] * 15;
@@ -34,6 +36,9 @@ class Biomorph extends Component {
     this.evenReduction = g[6] * 0.15;
     this.oddReduction = g[7] * 0.15;
     this.levels = g[8];
+    this.rainbow = new Rainbow();
+    this.rainbow.setSpectrumByArray(colors[g[9] - 1]);
+    this.rainbow.setNumberRange(0, this.levels);
   }
 
   componentDidMount() {
@@ -49,7 +54,7 @@ class Biomorph extends Component {
   }
 
   get divergence() {
-    if (this.level === 1) {
+    if (this.level === 0) {
       return this.firstAngle;
     } else if (utils.isEven(this.level)) {
       return this.evenAngle;
@@ -58,7 +63,7 @@ class Biomorph extends Component {
   }
 
   get reduction() {
-    if (this.level === 1) {
+    if (this.level === 0) {
       return this.firstReduction;
     } else if (utils.isEven(this.level)) {
       return this.evenReduction;
@@ -69,7 +74,7 @@ class Biomorph extends Component {
   draw() {
     const {width, height} = this.canvas;
     const parentBranches = [];
-    this.ctx.fillStyle = '#fff';
+    this.ctx.fillStyle = '#010511';
     this.ctx.fillRect(0, 0, width, height);
     const trunk = new Branch({
       x: width / 2,
@@ -114,6 +119,7 @@ class Biomorph extends Component {
     this.ctx.lineWidth = branch.thickness;
     this.ctx.moveTo(branch.startPoint.x, this.canvas.height - branch.startPoint.y);
     this.ctx.lineTo(branch.endPoint.x, this.canvas.height - branch.endPoint.y);
+    this.ctx.strokeStyle = '#' + this.rainbow.colourAt(this.level);
     this.ctx.stroke();
   }
 
