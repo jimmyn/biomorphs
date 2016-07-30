@@ -13,10 +13,16 @@ const App = ({
   generation
 }) => (
   <div className={classNames.container}>
-    <button onClick={getRandomGenome}>Generate random genome</button>
-    <h2>Parent #{generation}</h2>
+    <button
+      onClick={getRandomGenome}
+      className={classNames.button}>
+      Generate random genome
+    </button>
+    <h2>Parent (generation #{generation})</h2>
     <section className={classNames.parent}>
-      <Biomorph genome={parentGenome} />
+      <Biomorph
+        genome={parentGenome}
+        onClick={getRandomGenome} />
     </section>
     <h2>Descendants</h2>
     <section className={classNames.descendants}>
@@ -24,6 +30,7 @@ const App = ({
         <Biomorph
           genome={genome}
           onClick={selectParentGenome}
+          number={i + 1}
           key={i} />
       ))}
     </section>

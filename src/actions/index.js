@@ -1,18 +1,29 @@
 import * as types from './types';
 import * as utils from 'lib/utils';
 
-let conunter = 0;
+const mutation = (gene) => {
+  const plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+  switch (gene) {
+    case 1:
+      return 2;
+    case 10:
+      return 9;
+  }
+  return gene + plusOrMinus;
+};
+
+let generation = 1;
 export const reproduce = (genome, isNewGeneration = true) => {
-  const generation = isNewGeneration ? conunter++ : 0;
+  if (isNewGeneration) generation++;
   const genomes = genome.map((gene, i) => [
     ...genome.slice(0, i),
-    genome[i] + 1,
+    mutation(genome[i]),
     ...genome.slice(i + 1)
   ]);
   return {
     type: types.REPRODUCE,
     generation,
-    genomes
+    genomes: genomes.sort(() => 0.5 - Math.random())
   };
 };
 

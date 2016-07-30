@@ -11,6 +11,7 @@ class Biomorph extends Component {
   }
 
   static defaultProps = {
+    thumb: false,
     onClick() {
     }
   };
@@ -19,7 +20,7 @@ class Biomorph extends Component {
     const g = this.props.genome;
     this.level = 1;
     this.length = g[0] * 20;
-    this.thikness = g[1];
+    this.thikness = Math.sqrt(g[1]);
     this.firstAngle = g[2] * 15;
     this.evenAngle = g[3] * 15;
     this.oddAngle = g[4] * 15;
@@ -27,17 +28,19 @@ class Biomorph extends Component {
     this.evenReduction = g[6] * 0.15;
     this.oddReduction = g[7] * 0.15;
     this.levels = g[8];
+
   }
 
   componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
+    window.ctx = this.ctx;
     this.init();
-    this.drow();
+    this.draw();
   }
 
   componentDidUpdate() {
     this.init();
-    this.drow();
+    this.draw();
   }
 
   get divergence() {
@@ -58,14 +61,14 @@ class Biomorph extends Component {
     return this.oddReduction;
   }
 
-  drow() {
+  draw() {
     const {width, height} = this.canvas;
     const parentBranches = [];
     this.ctx.fillStyle = '#fff';
     this.ctx.fillRect(0, 0, width, height);
     const trunk = new Branch({
       x: width / 2,
-      y: this.length,
+      y: (height - this.length) / 2,
       angle: 90,
       length: this.length,
       thickness: this.thikness
@@ -110,20 +113,24 @@ class Biomorph extends Component {
   }
 
   render() {
-    const {onClick, genome} = this.props;
+    const {onClick, genome, thumb, number} = this.props;
+    const size = thumb ? 100 : 320;
     return (
       <figure className={classNames.figure}>
+        {number && <div className={classNames.number}>
+          {number}
+        </div>}
         <canvas
           onClick={() => onClick(genome)}
           className={classNames.canvas}
-          width="320"
-          height="320"
+          width={size}
+          height={size}
           ref={node => {
             this.canvas = node;
           }} />
-        <p className={classNames.genome}>
+        {!thumb && <p className={classNames.genome}>
           Genome: [{genome.join(', ')}]
-        </p>
+        </p>}
       </figure>
     );
   }

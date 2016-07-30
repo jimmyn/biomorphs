@@ -1,15 +1,31 @@
 .figure {
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 .canvas {
   display: block;
   border: 1px solid #b9b9b9;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .genome {
   text-align: center;
   font-weight: bold;
+  margin: 0.5em 0 1.5em;
+}
+
+.number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  line-height: 22px;
+  width: 22px;
+  text-align: center;
+  border: 1px solid #b9b9b9;
+  background: #fff;
+  font-size: 0.8em;
 }
