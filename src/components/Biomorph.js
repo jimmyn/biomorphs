@@ -4,11 +4,17 @@ import * as utils from 'lib/utils';
 import classNames from './Biomorph.scss';
 
 class Biomorph extends Component {
-
   constructor(props) {
     super(props);
     this.init();
   }
+
+  static propTypes = {
+    genome: PropTypes.array.isRequired,
+    onClick: PropTypes.function,
+    thumb: PropTypes.bool,
+    number: PropTypes.number
+  };
 
   static defaultProps = {
     thumb: false,
@@ -28,7 +34,6 @@ class Biomorph extends Component {
     this.evenReduction = g[6] * 0.15;
     this.oddReduction = g[7] * 0.15;
     this.levels = g[8];
-
   }
 
   componentDidMount() {

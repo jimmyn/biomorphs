@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import withScroll from 'scroll-behavior';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose} from 'redux';
-import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+import {Router, hashHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import {getRandomGenome} from 'actions';
 import reducers from './reducers';

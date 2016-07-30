@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Biomorph from 'components/Biomorph';
 import classNames from './HomeView.scss';
 
@@ -34,5 +34,16 @@ const HomeView = ({
     </section>
   </section>
 );
+
+HomeView.propTypes = {
+  parentGenome: PropTypes.array.isRequired,
+  descendantsGenomes: PropTypes.arrayOf(
+    PropTypes.array
+  ).isRequired,
+  getRandomGenome: PropTypes.func.isRequired,
+  reproduce: PropTypes.func.isRequired,
+  selectParentGenome: PropTypes.func.isRequired,
+  generation: PropTypes.number.isRequired
+};
 
 export default HomeView;
