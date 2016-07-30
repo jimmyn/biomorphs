@@ -1,11 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import Branch from 'lib/Branch';
 import * as utils from 'lib/utils';
-
-const canvasStyle = {
-  border: '1px solid',
-  display: 'block'
-};
+import classNames from './Biomorph.scss';
 
 class Biomorph extends Component {
 
@@ -15,7 +11,8 @@ class Biomorph extends Component {
   }
 
   static defaultProps = {
-    onClick() {}
+    onClick() {
+    }
   };
 
   init() {
@@ -64,7 +61,7 @@ class Biomorph extends Component {
   drow() {
     const {width, height} = this.canvas;
     const parentBranches = [];
-    this.ctx.fillStyle = '#ececec';
+    this.ctx.fillStyle = '#fff';
     this.ctx.fillRect(0, 0, width, height);
     const trunk = new Branch({
       x: width / 2,
@@ -99,7 +96,7 @@ class Biomorph extends Component {
       branches.push(newBranch2);
     });
     if (this.level < this.levels) {
-      this.level ++;
+      this.level++;
       this.drawBranches(branches);
     }
   }
@@ -113,15 +110,21 @@ class Biomorph extends Component {
   }
 
   render() {
+    const {onClick, genome} = this.props;
     return (
-      <canvas
-        onClick={this.props.onClick}
-        style={canvasStyle}
-        width="300"
-        height="300"
-        ref={node => {
-          this.canvas = node;
-        }} />
+      <figure className={classNames.figure}>
+        <canvas
+          onClick={() => onClick(genome)}
+          className={classNames.canvas}
+          width="320"
+          height="320"
+          ref={node => {
+            this.canvas = node;
+          }} />
+        <p className={classNames.genome}>
+          Genome: [{genome.join(', ')}]
+        </p>
+      </figure>
     );
   }
 }

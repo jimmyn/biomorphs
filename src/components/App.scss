@@ -2,4 +2,18 @@
   padding: 5em;
   max-width: 1200px;
   margin: auto;
+  text-align: center;
+}
+
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.descendants {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
