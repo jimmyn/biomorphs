@@ -5,12 +5,11 @@
   "main": "index.js",
   "repository": "git@github.com:jimmyn/biomorphs.git",
   "scripts": {
-    "start": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --env dev",
+    "start": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --env.dev",
     "start:prod": "babel-node lib/server",
     "lint": "eslint src test;exit 0;",
     "lint:fix": "eslint --fix src;exit 0;",
-    "build": "babel-node ./node_modules/webpack/bin/webpack.js --env prod",
-    "deploy": "git subtree push --prefix public origin gh-pages"
+    "build": "babel-node ./node_modules/webpack/bin/webpack.js --env.prod"
   },
   "author": "Dmitriy Nevzorov",
   "license": "MIT",
@@ -24,7 +23,8 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.23.1",
-    "eslint": "^3.1.1",
+    "cssnano": "^3.7.3",
+    "eslint": "^3.2.0",
     "eslint-config-standard": "^5.3.1",
     "eslint-config-standard-react": "^3.0.0",
     "eslint-plugin-babel": "^3.3.0",
@@ -32,19 +32,22 @@
     "eslint-plugin-react": "^5.2.2",
     "eslint-plugin-standard": "^2.0.0",
     "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^2.0.0-beta.3",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.22.0",
     "json-loader": "^0.5.4",
+    "node-sass": "^3.8.0",
     "postcss-loader": "^0.9.1",
-    "precss": "^1.4.0",
+    "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "webpack": "^2.1.0-beta.15",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^2.1.0-beta.20",
+    "webpack-dev-server": "^2.1.0-beta.0"
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0",
+    "normalize.css": "^4.2.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
     "react-redux": "^4.0.0",
     "redux": "^3.0.4"
   }

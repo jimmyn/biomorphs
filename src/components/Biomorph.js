@@ -117,8 +117,8 @@ class Biomorph extends Component {
       <canvas
         onClick={this.props.onClick}
         style={canvasStyle}
-        width="500"
-        height="500"
+        width="300"
+        height="300"
         ref={node => {
           this.canvas = node;
         }} />

@@ -1,7 +1,15 @@
 import webpack from 'webpack';
-import precss from 'precss';
-import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+
+const cssModulesLoader = [
+  'css?',
+  'sourceMap&-minimize',
+  'modules',
+  'importLoaders=1',
+  'localIdentName=[name]__[local]__[hash:base64:5]'
+].join('&');
 
 export default function(options) {
   const webpackConfig = {
@@ -19,6 +27,10 @@ export default function(options) {
         favicon: './src/static/favicon.png',
         filename: 'index.html',
         inject: 'body'
+      }),
+      new ExtractTextPlugin({
+        filename: 'styles.[hash].css',
+        allChunks: true
       })
     ],
     module: {
@@ -26,23 +38,40 @@ export default function(options) {
         exclude: /node_modules/,
         loader: 'babel'
       }, {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
-      }, {
         test: /\.json$/,
         loader: 'json'
       }, {
         test: /\.html$/,
         loader: 'html'
+      }, {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: [cssModulesLoader, 'postcss', 'sass?sourceMap']
+        })
       }]
     },
     resolve: {
       modules: ['./src', 'node_modules'],
       extensions: ['', '.js', '.jsx', '.json']
     },
-    postcss() {
-      return [precss, autoprefixer];
-    }
+    postcss: [
+      cssnano({
+        autoprefixer: {
+          add: true,
+          remove: true,
+          browsers: ['last 2 versions']
+        },
+        discardComments: {
+          removeAll: true
+        },
+        discardUnused: false,
+        mergeIdents: false,
+        reduceIdents: false,
+        safe: true,
+        sourcemap: true
+      })
+    ]
   };
 
   if (options.dev) {
