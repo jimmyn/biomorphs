@@ -4,20 +4,3 @@
   margin: auto;
   text-align: center;
 }
-
-.parent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.descendants {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.button {
-  padding: 10px 20px;
-}

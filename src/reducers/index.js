@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 import * as types from 'actions/types';
+import {routerReducer as routing} from 'react-router-redux';
 
 const parentGenome = (state = [], action) => {
   switch (action.type) {
@@ -26,6 +27,7 @@ const descendantsGenomes = (state = [], action) => {
 };
 
 export default combineReducers({
+  routing,
   parentGenome,
   generation,
   descendantsGenomes
