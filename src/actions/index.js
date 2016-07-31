@@ -6,8 +6,8 @@ const mutation = (gene) => {
   switch (gene) {
     case 1:
       return 2;
-    case 10:
-      return 9;
+    case 9:
+      return 8;
   }
   return gene + plusOrMinus;
 };
@@ -45,7 +45,7 @@ export const selectParentGenome = (genome, isFirstGeneration) => {
 
 export const getRandomGenome = () => {
   return dispatch => {
-    const genome = Array.from(new Array(10), n => utils.getRandomInt(1, 10));
+    const genome = Array.from(new Array(10), n => utils.getRandomInt(1, 9));
     dispatch(selectParentGenome(genome, true));
   };
 };
