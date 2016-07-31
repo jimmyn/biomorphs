@@ -5,9 +5,9 @@ import classNames from './App.scss';
 const App = ({children}) => (
   <main className={classNames.container}>
     <Header />
-    <section className={classNames.content}>
+    <div className={classNames.content}>
       {children}
-    </section>
+    </div>
   </main>
 );
 
