@@ -31,7 +31,7 @@ class ShareView extends Component {
             href={this.state.src}
             className={classNames.save}
             download="biomorph.png">
-            Save
+            Save image
           </a>
         </p>
       </section>
