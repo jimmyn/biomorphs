@@ -1,6 +1,5 @@
 import React, {PropTypes, Component} from 'react';
 import Biomorph from 'components/Biomorph';
-import Helmet from "react-helmet";
 import classNames from './ShareView.scss';
 
 class ShareView extends Component {
@@ -15,13 +14,8 @@ class ShareView extends Component {
   }
   render() {
     const {genome, generation, selectGenome} = this.props;
-    const oggImage = {
-      property: 'og:image',
-      content: this.state.src
-    };
     return (
       <section>
-        <Helmet meta={[oggImage]} />
         <h2>Your biomorph  (generation {generation})</h2>
         <div className={classNames.container}>
           <Biomorph
