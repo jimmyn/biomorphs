@@ -1,5 +1,6 @@
 import * as types from './types';
 import * as utils from 'lib/utils';
+import {push} from 'react-router-redux';
 
 const mutation = (gene) => {
   const plusOrMinus = Math.random() < 0.5 ? -1 : 1;
@@ -47,5 +48,12 @@ export const getRandomGenome = () => {
   return dispatch => {
     const genome = Array.from(new Array(10), n => utils.getRandomInt(1, 9));
     dispatch(selectParentGenome(genome, true));
+  };
+};
+
+export const selectGenome = (genome) => {
+  return dispatch => {
+    dispatch(selectParentGenome(genome, true));
+    dispatch(push('/'));
   };
 };

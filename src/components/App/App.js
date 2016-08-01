@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import Header from './Header';
+import Header from '../Header';
 import classNames from './App.scss';
 
 const App = ({children}) => (

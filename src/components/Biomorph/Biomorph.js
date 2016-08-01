@@ -14,21 +14,21 @@ class Biomorph extends Component {
   static propTypes = {
     genome: PropTypes.array.isRequired,
     onClick: PropTypes.func,
-    thumb: PropTypes.bool,
-    number: PropTypes.number
+    save: PropTypes.func,
+    number: PropTypes.number,
+    size: PropTypes.oneOf(['small', 'normal', 'large'])
   };
 
   static defaultProps = {
-    thumb: false,
-    onClick() {
-    }
+    onClick() {}
   };
 
   init() {
+    const n = this.props.size === 'large' ? 2 : 1;
     const g = this.props.genome;
     this.level = 0;
-    this.length = g[0] * 20;
-    this.thikness = Math.sqrt(g[1]);
+    this.length = g[0] * 15 * n;
+    this.thikness = Math.round(Math.sqrt(g[1])) * n;
     this.firstAngle = g[2] * 15;
     this.evenAngle = g[3] * 15;
     this.oddAngle = g[4] * 15;
@@ -123,9 +123,23 @@ class Biomorph extends Component {
     this.ctx.stroke();
   }
 
+  get size() {
+    switch (this.props.size) {
+      case 'small':
+        return 100;
+      case 'large':
+        return 640;
+    }
+    return 320;
+  }
+
+  get src() {
+    return this.canvas.toDataURL('image/png')
+      .replace('image/png', 'image/octet-stream');
+  }
+
   render() {
-    const {onClick, genome, thumb, number} = this.props;
-    const size = thumb ? 100 : 320;
+    const {onClick, genome, number} = this.props;
     return (
       <figure className={classNames.figure}>
         {number && <div className={classNames.number}>
@@ -134,14 +148,14 @@ class Biomorph extends Component {
         <canvas
           onClick={() => onClick(genome)}
           className={classNames.canvas}
-          width={size}
-          height={size}
+          width={this.size}
+          height={this.size}
           ref={node => {
             this.canvas = node;
           }} />
-        {!thumb && <p className={classNames.genome}>
+        <p className={classNames.genome}>
           Genome: [{genome.join(', ')}]
-        </p>}
+        </p>
       </figure>
     );
   }
