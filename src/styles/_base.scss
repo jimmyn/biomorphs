@@ -3,6 +3,7 @@
 
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 *, :after, :before {
@@ -11,14 +12,26 @@ html {
 
 body {
   background: #010514;
-  color: #9b9b9b;
+  color: #afafaf;
+  font-weight: 300;
+  height: inherit;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
-h2 {
-  font-weight: 100;
+p {
+  margin: 0.6em 0;
+  line-height: 1.8em;
+}
+
+h1, h2, h3, h4 {
+  font-weight: inherit;
 }
 
 a {
+  white-space: nowrap;
   color: inherit;
+  margin: 0 0.3em;
+  padding-bottom: 2px;
+  text-decoration: none;
+  border-bottom: 1px solid;
 }

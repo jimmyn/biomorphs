@@ -3,3 +3,11 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.description {
+  padding: 1em;
+  opacity: 0.8;
+  p {
+    margin: 0;
+  }
+}

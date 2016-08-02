@@ -9,6 +9,7 @@
   border: 1px solid #373737;
   border-radius: 3px;
   cursor: pointer;
+  max-width: 100%;
 }
 
 .genome {
@@ -16,6 +17,7 @@
   font-weight: 100;
   font-size: 0.9em;
   margin: 0.5em 0 1.5em;
+  user-select: none;
 }
 
 .number {

@@ -10,6 +10,10 @@
   flex-wrap: wrap;
 }
 
-.button {
-  padding: 10px 20px;
+.description {
+  padding: 1em;
+  opacity: 0.8;
+  p {
+    margin: 0;
+  }
 }

@@ -10,7 +10,7 @@ const Header = ({genome, generation}) => (
       className={classNames.link}
       activeClassName={classNames.activeLink}
       to="/">
-      Home
+      Biomorphs
     </IndexLink>
     <Link
       className={classNames.link}
@@ -23,6 +23,12 @@ const Header = ({genome, generation}) => (
       activeClassName={classNames.activeLink}
       to={`/share/${encode({genome, generation})}`}>
       Share
+    </Link>
+    <Link
+      className={classNames.link}
+      activeClassName={classNames.activeLink}
+      to="/about">
+      About
     </Link>
   </nav>
 );

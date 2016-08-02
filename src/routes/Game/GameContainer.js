@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as actions from 'actions';
-import HomeView from './HomeView';
+import GameView from './GameView';
 
 const mapStateToProps = (state) => ({
   parentGenome: state.parentGenome,
@@ -8,4 +8,4 @@ const mapStateToProps = (state) => ({
   descendantsGenomes: state.descendantsGenomes
 });
 
-export default connect(mapStateToProps, actions)(HomeView);
+export default connect(mapStateToProps, actions)(GameView);

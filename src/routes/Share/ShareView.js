@@ -16,7 +16,7 @@ class ShareView extends Component {
     const {genome, generation, selectGenome} = this.props;
     return (
       <section>
-        <h2>Your biomorph  (generation {generation})</h2>
+        <h2>Biomorph (generation #{generation})</h2>
         <div className={classNames.container}>
           <Biomorph
             ref={(c) => {

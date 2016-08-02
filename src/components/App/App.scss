@@ -1,9 +1,19 @@
 .container {
-  padding: 0 5% 3em;
+  height: inherit;
+  padding: 0 5%;
   max-width: 1200px;
+  display: flex;
+  flex-direction: column;
   margin: auto;
 }
 
 .content {
   text-align: center;
+  flex: 1;
+}
+
+.footer {
+  text-align: center;
+  margin: 3em 0 2em;
+  opacity: 0.8;
 }

@@ -8,6 +8,11 @@ const App = ({children}) => (
     <div className={classNames.content}>
       {children}
     </div>
+    <footer className={classNames.footer}>
+      Author: <a href="https://github.com/jimmyn" target="_blank">Dmitriy Nevzorov</a>
+      {' '}
+      <a href="https://github.com/jimmyn/biomorphs" target="_blank">View source code</a>
+    </footer>
   </main>
 );
 
