@@ -16,6 +16,9 @@ Biomorphs are virtual entities that were devised by [Richard Dawkins](https://ri
 |`build`|Compiles all files into `/public` folder|
 |`deploy`|Builds all files and deploys them to gh-pages using|
 
+## Tests
+TODO: Add tests
+
 ## Contributing
 
 1. Fork it!
