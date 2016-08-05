@@ -10,10 +10,7 @@
     "lint": "eslint src test;exit 0;",
     "lint:fix": "eslint --fix src;exit 0;",
     "build": "babel-node ./node_modules/webpack/bin/webpack.js --env.prod",
-    "deploy": "npm run build -- --env.deploy && gh-pages -d public",
-    "release:patch": "npm version patch && npm run deploy",
-    "release:minor": "npm version minor && npm run deploy",
-    "release:major": "npm version major && npm run deploy"
+    "deploy": "npm run build -- --env.deploy && gh-pages -d public"
   },
   "author": "Dmitriy Nevzorov",
   "license": "MIT",
