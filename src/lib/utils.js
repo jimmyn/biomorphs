@@ -13,3 +13,7 @@ export const encode = (obj) => (
 export const decode = (string) => (
   JSON.parse(base64url.decode(string))
 );
+
+export const round = (num, decimals = 2) => (
+  parseFloat(num.toFixed(decimals))
+);

@@ -1,3 +1,4 @@
+import {round} from './utils';
 class Branch {
   constructor({x, y, angle, length, thickness}) {
     this.startPoint = {x, y};
@@ -7,9 +8,9 @@ class Branch {
   }
 
   get endPoint() {
-    const epx = this.startPoint.x + this.length * Math.cos(this.angle * Math.PI / 180);
-    const epy = this.startPoint.y + this.length * Math.sin(this.angle * Math.PI / 180);
-    return {x: epx, y: epy};
+    const x = this.startPoint.x + this.length * Math.cos(this.angle * Math.PI / 180);
+    const y = this.startPoint.y + this.length * Math.sin(this.angle * Math.PI / 180);
+    return {x: round(x), y: round(y)};
   }
 }
 
