@@ -3,8 +3,7 @@ import * as utils from 'lib/utils';
 describe('(lib) utils', () => {
   it('getRandomInt should return random int in range', () => {
     const int = utils.getRandomInt(1, 9);
-    expect(int).to.be.above(0);
-    expect(int).to.be.below(10);
+    expect(int).to.be.within(1, 9);
   });
 
   it('isEven should return true for even number', () => {

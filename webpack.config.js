@@ -74,9 +74,9 @@ export default function(options) {
     },
     resolve: {
       modules: ['./src', 'node_modules'],
-      extensions: ['', '.js', '.jsx', '.json']
+      extensions: ['', '.js', '.jsx', '.json'],
+      alias: {}
     },
-    alias: {},
     globals: {},
     postcss: [
       cssnano({
@@ -109,7 +109,7 @@ export default function(options) {
   if (options.test) {
     process.env.NODE_ENV = 'test';
     webpackConfig.devtool = 'cheap-module-source-map';
-    webpackConfig.alias.sinon = 'sinon/pkg/sinon.js';
+    webpackConfig.resolve.alias.sinon = 'sinon/pkg/sinon.js';
     webpackConfig.module.noParse = [
       /\/sinon\.js/
     ];
