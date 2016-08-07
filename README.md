@@ -13,11 +13,10 @@ Biomorphs are virtual entities that were devised by [Richard Dawkins](https://ri
 |`start:prod`|Starts production server at at `localhost:8080`. Serves compiled files from `/public` folder|
 |`lint`|Lints all `.js` files.|
 |`lint:fix`|Lints and fixes all `.js` files. [Read more on this](http://eslint.org/docs/user-guide/command-line-interface.html#fix).|
+|`test`|Runs unit tests with Karma and generates a coverage report.|
+|`test:watch`|Runs Karma and watches for changes to re-run tests; does not generate coverage reports.|
 |`build`|Compiles all files into `/public` folder|
 |`deploy`|Builds all files and deploys them to gh-pages using|
-
-## Tests
-TODO: Add tests
 
 ## Contributing
 
