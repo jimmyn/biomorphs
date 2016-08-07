@@ -35,8 +35,29 @@ export default function(options) {
     ],
     module: {
       loaders: [{
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          presets: [
+            ['es2015', {'modules': false}],
+            'react',
+            'stage-0'
+          ],
+          env: {
+            production: {
+              presets: ['react-optimize'],
+              compact: true
+            },
+            test: {
+              plugins: [
+                ['__coverage__', {'only': 'src/'}],
+                'babel-plugin-rewire'
+              ]
+            }
+          }
+        }
       }, {
         test: /\.json$/,
         loader: 'json'
@@ -55,6 +76,8 @@ export default function(options) {
       modules: ['./src', 'node_modules'],
       extensions: ['', '.js', '.jsx', '.json']
     },
+    alias: {},
+    globals: {},
     postcss: [
       cssnano({
         autoprefixer: {
@@ -76,9 +99,43 @@ export default function(options) {
 
   if (options.dev) {
     webpackConfig.devtool = 'source-map';
+    webpackConfig.plugins.push(
+      new webpack.DefinePlugin({
+        '__DEV_': true
+      })
+    );
+  }
+
+  if (options.test) {
+    process.env.NODE_ENV = 'test';
+    webpackConfig.devtool = 'cheap-module-source-map';
+    webpackConfig.alias.sinon = 'sinon/pkg/sinon.js';
+    webpackConfig.module.noParse = [
+      /\/sinon\.js/
+    ];
+    webpackConfig.module.loaders.push([
+      {
+        test: /sinon(\\|\/)pkg(\\|\/)sinon\.js/,
+        loader: 'imports?define=>false,require=>false'
+      }
+    ]);
+    // Enzyme fix, see:
+    // https://github.com/airbnb/enzyme/issues/47
+    webpackConfig.externals = {
+      'react/addons': true,
+      'react/lib/ExecutionEnvironment': true,
+      'react/lib/ReactContext': 'window'
+    };
+    webpackConfig.plugins.push(
+      new webpack.DefinePlugin({
+        '__COVERAGE__': options.coverage,
+        '__TEST_': true
+      })
+    );
   }
 
   if (options.prod) {
+    process.env.NODE_ENV = 'production';
     webpackConfig.plugins.push(
       new webpack.LoaderOptionsPlugin({
         minimize: true,
@@ -86,7 +143,8 @@ export default function(options) {
       }),
       new webpack.DefinePlugin({
         'process.env': {
-          'NODE_ENV': JSON.stringify('production')
+          'NODE_ENV': JSON.stringify('production'),
+          '__PROD__': true
         }
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
@@ -102,7 +160,7 @@ export default function(options) {
   }
 
   if (options.deploy) {
-    webpackConfig.output.publicPath = '/biomorphs/'
+    webpackConfig.output.publicPath = '/biomorphs/';
   }
 
   return webpackConfig;

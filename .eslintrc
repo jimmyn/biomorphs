@@ -11,7 +11,10 @@
     "babel"
   ],
   "globals": {
-    "$": true
+    "__COVERAGE__": true,
+    "__DEV__": true,
+    "__PROD__": true,
+    "__TEST__": true
   },
   "rules": {
     "semi": [
