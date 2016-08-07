@@ -22,18 +22,18 @@ const AboutView = () => (
       have about 20,000 to 25,000 protein-coding genes.
     </p>
     <p>
-      The gradual change in the biomorphs' appearance in each generation serves as a simple model of <b>cumulative
-      selection</b>. Each biomorph is nearly identical to its parent, but after many generations the appearance of the
+      The gradual change in the biomorphs' appearance in each generation serves as a simple model of <em>cumulative
+      selection</em>. Each biomorph is nearly identical to its parent, but after many generations the appearance of the
       biomorph can diverge wildly from the original. Biological evolution works in a similar way, though on a much
       larger time scale. For example, you closely resemble your parents, your parents closely resemble their parents,
       and so on, but if you go back tens of thousands of generations your distant ancestors would only bear a slight
       resemblance to you.
     </p>
     <p>
-      Because you select which child you want to survive, biomorphs are an example of <b>artificial selection</b> (similar to
+      Because you select which child you want to survive, biomorphs are an example of <em>artificial selection</em> (similar to
       how humans have guided dog evolution over the past 15,000 – 30,000 years). In nature, however, evolution is based
-      on <b>natural selection</b>: organisms that are best suited for their environment are the ones most likely to survive and
-      pass on their genes.
+      on <em>natural selection</em>: organisms that are best suited for their environment are the ones most likely to
+      survive and pass on their genes.
     </p>
   </section>
 );
