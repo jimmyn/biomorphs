@@ -2,6 +2,13 @@
 
 Biomorphs are virtual entities that were devised by [Richard Dawkins](https://richarddawkins.net/) in his book [The Blind Watchmaker](http://www.amazon.com/The-Blind-Watchmaker-Evidence-Evolution/dp/0393315703) as a way to visualize the power of evolution.
 
+## Technological stack
+
+  - app architecture: `react`, `react-redux`, `react-router` `react-router-redux`, `redux-thunk`
+  - styling: `sass`, `postcss`, `css-modules`
+  - testing: `karma`, `chai`, `sinon`, `enzyme`
+  - development and building: `webpack`, `babel`
+
 ## Usage
   
   1. Clone the project
