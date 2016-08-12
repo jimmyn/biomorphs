@@ -5,7 +5,7 @@ import GameView from './GameView';
 const mapStateToProps = (state) => ({
   parentGenome: state.parentGenome,
   generation: state.history.length,
-  descendantsGenomes: state.descendantsGenomes
+  descendantGenomes: state.descendantGenomes
 });
 
 export default connect(mapStateToProps, actions)(GameView);

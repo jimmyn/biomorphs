@@ -30,10 +30,10 @@ const AboutView = () => (
       resemblance to you.
     </p>
     <p>
-      Because you select which child you want to survive, biomorphs are an example of <em>artificial selection</em> (similar to
-      how humans have guided dog evolution over the past 15,000 – 30,000 years). In nature, however, evolution is based
-      on <em>natural selection</em>: organisms that are best suited for their environment are the ones most likely to
-      survive and pass on their genes.
+      Because you select which child you want to survive, biomorphs are an example of <em>artificial
+      selection</em> (similar to how humans have guided dog evolution over the past 15,000 – 30,000 years). In nature,
+      however, evolution is based on <em>natural selection</em>: organisms that are best suited for their environment
+      are the ones most likely to survive and pass on their genes.
     </p>
   </section>
 );

@@ -41,6 +41,7 @@ class ShareView extends Component {
 
 ShareView.propTypes = {
   genome: PropTypes.array.isRequired,
+  generation: PropTypes.number.isRequired,
   selectGenome: PropTypes.func.isRequired
 };
 

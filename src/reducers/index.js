@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import {routerReducer as routing} from 'react-router-redux';
 import * as types from 'actions/types';
 
-const parentGenome = (state = [], action) => {
+export const parentGenome = (state = [], action) => {
   switch (action.type) {
     case types.SELECT_PARENT_GENOME:
       return action.genome;
@@ -10,7 +10,7 @@ const parentGenome = (state = [], action) => {
   return state;
 };
 
-const descendantsGenomes = (state = [], action) => {
+export const descendantGenomes = (state = [], action) => {
   switch (action.type) {
     case types.REPRODUCE:
       return action.genomes;
@@ -18,7 +18,7 @@ const descendantsGenomes = (state = [], action) => {
   return state;
 };
 
-const history = (state = [], action) => {
+export const history = (state = [], action) => {
   switch (action.type) {
     case types.UPDATE_HISTORY:
       return [...state, action.genome];
@@ -32,5 +32,5 @@ export default combineReducers({
   routing,
   parentGenome,
   history,
-  descendantsGenomes
+  descendantGenomes
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Link from 'react-router/lib/Link';
 import IndexLink from 'react-router/lib/IndexLink';
 import classNames from './Header.scss';
@@ -32,5 +32,10 @@ const Header = ({genome, generation}) => (
     </Link>
   </nav>
 );
+
+Header.propTypes = {
+  genome: PropTypes.array.isRequired,
+  generation: PropTypes.number.isRequired
+};
 
 export default Header;

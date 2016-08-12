@@ -9,4 +9,4 @@ export default [
   ['#43cea2', '#185a9d'],
   ['#00d2ff', '#3a7bd5'],
   ['#DAD299', '#B0DAB9']
-]
+];

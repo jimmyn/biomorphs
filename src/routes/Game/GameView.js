@@ -4,7 +4,7 @@ import classNames from './GameView.scss';
 
 const GameView = ({
   parentGenome,
-  descendantsGenomes,
+  descendantGenomes,
   getRandomGenome,
   reproduce,
   selectParentGenome,
@@ -24,7 +24,7 @@ const GameView = ({
     </section>
     <h2>Descendants</h2>
     <section className={classNames.descendants}>
-      {descendantsGenomes.map((genome, i) => (
+      {descendantGenomes.map((genome, i) => (
         <Biomorph
           genome={genome}
           onClick={selectParentGenome}
@@ -37,7 +37,7 @@ const GameView = ({
 
 GameView.propTypes = {
   parentGenome: PropTypes.array.isRequired,
-  descendantsGenomes: PropTypes.arrayOf(
+  descendantGenomes: PropTypes.arrayOf(
     PropTypes.array
   ).isRequired,
   getRandomGenome: PropTypes.func.isRequired,
