@@ -5,14 +5,17 @@ import thunk from 'redux-thunk';
 import withScroll from 'scroll-behavior';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose} from 'redux';
-import {Router, hashHistory} from 'react-router';
+import {Router, useRouterHistory} from 'react-router';
+import createHashHistory from 'history/lib/createHashHistory';
 import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux';
 import {getRandomGenome} from 'actions';
 import reducers from './reducers';
 import routes from './routes';
 
 const initialState = {};
-const appHistory = withScroll(hashHistory);
+const appHistory = withScroll(
+  useRouterHistory(createHashHistory)({queryKey: false})
+);
 const router = routerMiddleware(appHistory);
 const store = createStore(reducers, initialState, compose(
   applyMiddleware(thunk, router),
